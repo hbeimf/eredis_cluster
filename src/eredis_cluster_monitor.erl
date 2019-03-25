@@ -200,7 +200,7 @@ connect_(InitNodes) ->
 
 init(_Args) ->
     ets:new(?MODULE, [protected, set, named_table, {read_concurrency, true}]),
-    InitNodes = application:get_env(eredis_cluster, init_nodes, []),
+    InitNodes = application:get_env(redisc, init_nodes, []),
     {ok, connect_(InitNodes)}.
 
 handle_call({reload_slots_map,Version}, _From, #state{version=Version} = State) ->
